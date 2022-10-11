@@ -1,5 +1,5 @@
 # Customer Segmentation API
-A cool interesting project involving data engineering and API development
+A  project involving data engineering and API development
 ## Background
 This project is about data cleaning, creating customer segments and exposing a rest api to that provides vouchers to
 old customer.
@@ -17,7 +17,7 @@ The following data-cleaning steps are done in this project:
 
 ## Requirements
 * Docker is needed to run the project in a containerized manner
-* Additionally, the project also supports local runs without docker. To run the project locally a venv with python3.10 is needed.
+* Additionally, the project also supports local runs without docker. To run the project locally a virtual environment with python3.10 is needed.
 
 ## Getting Started
 
@@ -31,7 +31,7 @@ This command starts the data cleaning and segments containers and does the data 
  docker-compose up restapi
 ```
 
-This command starts a Fast Api server and exposes a restapi to get the voucher amount. To read the docs about the rest API
+This command starts a uvicorn server and exposes a REST API to get the voucher amount. To read the docs about the API
 go to http://127.0.0.1:80/docs. The endpoint to call the voucher api is http://127.0.0.1:80/voucher_amount . Sample code to invoke the endpoint is in the file `send_request_endpoint.py`
 
 To stop the containers and remove the  containers, networks, volumes, and images created by up. Run the following command
@@ -51,7 +51,7 @@ To run the project locally without docker :
      ```
 
 
- * To run tests and do static checks on the code run. Run the following command
+ * To run tests and do static checks on the code . Run the following command
    ```bash
        ./run_tests.sh
     ```
