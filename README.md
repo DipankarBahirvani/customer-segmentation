@@ -45,26 +45,26 @@ To run the project locally without docker :
 *  Create a 3.10 python virtual environment using the below command.
     
     ```bash
-        python3.10 -m venv .venv
-        source .venv/bin/activate
-        pip-sync requirements.txt requirements-local.txt
+    python3.10 -m venv .venv
+    source .venv/bin/activate
+    pip-sync requirements.txt requirements-local.txt
      ```
 
 
  * To run tests and do static checks on the code . Run the following command
    ```bash
-    ./run_tests.sh
+   ./run_tests.sh
    ```
 * To run the data cleaning and segmentation component locally. Run the following command 
      ```bash
-        python processing.py clean-and-process-data --source-file-path=data/raw
+     python processing.py clean-and-process-data --source-file-path=data/raw
      ```
 
 * To run rest API l component locally. Run the following command
 
    ```bash
-       cd api/
-       uvicorn main:app
+   cd api/
+   uvicorn main:app
    ```
 
 
