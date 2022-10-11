@@ -1,4 +1,5 @@
 # Customer Segmentation API
+A cool interesting project invloving data engineering and api development
 ## Background
 This project is about data cleaning, creating customer segements and exposing a rest api to that provides voucher to
 old customer.
