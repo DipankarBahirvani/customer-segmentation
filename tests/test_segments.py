@@ -21,5 +21,6 @@ def test_recency_segment_2_years_ago():
 
 def test_compute_segment():
     from processing.create_segements import compute_frequent_segment
+
     result = compute_frequent_segment(10)
     assert result == "5-13"

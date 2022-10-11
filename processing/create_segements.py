@@ -10,7 +10,7 @@ def compute_recent_segment(last_order_ts: datetime) -> str:
        str:  recent segment values
 
     """
-    days = (datetime.now(timezone.utc) - last_order_ts).days
+    days = (datetime.now(timezone.utc).date() - last_order_ts.date()).days
 
     if 30 <= days <= 60:
         return "30-60"

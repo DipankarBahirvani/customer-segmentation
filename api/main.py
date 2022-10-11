@@ -73,8 +73,7 @@ def get_voucher_amount(customer: Customer) -> dict:
 
     else:
         segment = compute_frequent_segment(total_orders=customer.total_order)
-        print(segment)
-        print(frequent_lookup)
+
         if segment in frequent_lookup:
             return {"voucher_amount": frequent_lookup[segment]}
 
