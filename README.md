@@ -28,7 +28,7 @@ From the root directory run the following command:
 ``` 
 This command starts the data cleaning and segments containers and does the data cleaning and segment creation. Once, the above command is completed, run the below command 
 ```bash
- docker-compose up restapi
+docker-compose up restapi
 ```
 
 This command starts a uvicorn server and exposes a REST API to get the voucher amount. To read the docs about the API
@@ -36,7 +36,7 @@ go to http://127.0.0.1:80/docs. The endpoint to call the voucher api is http://1
 
 To stop the containers and remove the  containers, networks, volumes, and images created by up. Run the following command
 ```bash
- docker-compose down
+docker-compose down
 ```
 
 
