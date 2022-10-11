@@ -1,0 +1,78 @@
+# Customer Segmentation API
+## Background
+This project is about data cleaning, creating customer segements and exposing a rest api to that provides voucher to
+old customer.
+This project is implemented using Python 3.10 and docker.
+
+
+### Data Cleaning
+The following data cleaning steps are done in this project:
+* filter_country - Data is filtered for Peru(country_code)
+* cast_to_datetime- All timestamp fields are casted to datetime(order_ts,first_order_ts,last_order_ts)
+* cast_to_int- All numeric fields are casted to int(voucher_amount,total_orders)
+* remove_nan- Records for which voucher_amount is nan are discarded.
+
+
+
+## Requirements
+* Docker is needed to run the project in a containerized manner
+* Additionally, the project also supports local runs without docker. To run the project locally a venv with python3.10 is needed.
+
+## Getting Started
+
+From the root directory run the following command:
+
+* `docker-compose up processing` - This command starts the data cleaning and segments containers and does the data cleaning and segment creation.
+
+* `docker-composed up api` - This command starts a Fast Api server and exposes a restapi to get the voucher amount
+
+
+
+
+To run the project locally without docker :
+
+*  Create a 3.10 python virtual environment
+*  Install all dependencies specified in requirements.txt and requirements-local.txt. Using the below command
+ *  '.\run_test.sh' This script is used to run linters, static checks on the code and black formatting
+
+
+
+### Project Composition
+This entire project is on Docker. Python 3.10-slim base images are used to create our images.
+
+Components of the project structure
+* `api` - This folder contains all the code to start a uvicorn server and start a voucher_amout API.
+* `data` - Contains all raw data and the segments created by data transformation code.
+* `processing` - Contains all the code to clean the data and create segments.
+* `test` - Contains all the unit test to test the fastapi and the etl code.
+* `processing.py` - This is an entrypoint to call the code in the processing folder. We have used typer to allow invoke the different methods using command line.
+
+
+### Sending a Request to the API
+`Note: the request takes specific formats and these would be described in the code sample`
+
+In order to send a request to the API outside of using the interface endpoint (`localhost:5000/search_voucher`), it is
+possible to use the Python requests package:
+
+```
+import requests
+
+url = 'http://localhost:5000/voucher'
+myobj = {
+    "customer_id": 123,
+    "total_orders": 10,
+    "country_code": "Peru",
+    "last_order_ts": "2018-07-18 00:00:00", # %Y-%m-%d %H:%M:%S format
+    "first_order_ts": "2017-05-03 00:00:00",
+    "segment_name": "frequent_segment" # takes frequent_segment or recency_segment
+}
+
+x = requests.post(url, json=myobj)
+
+print(x.text)
+```
+
+
+## Future Improvements
+For POC purposes, I have used pandas and the segments are stored as json files. In production, we will use spark and store
+segements in in a key-value store.
