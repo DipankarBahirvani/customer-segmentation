@@ -3,4 +3,5 @@ pytest
 mypi
 isort
 mypy
+pylint
 types-python-dateutil

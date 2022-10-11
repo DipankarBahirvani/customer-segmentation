@@ -53,11 +53,11 @@ To run the project locally without docker :
 
  * To run tests and do static checks on the code . Run the following command
    ```bash
-       ./run_tests.sh
-    ```
+    ./run_tests.sh
+   ```
 * To run the data cleaning and segmentation component locally. Run the following command 
      ```bash
-        python processing.py clean-and-process-data --source-file-path =data/raw
+        python processing.py clean-and-process-data --source-file-path=data/raw
      ```
 
 * To run rest API l component locally. Run the following command
