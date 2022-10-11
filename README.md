@@ -1,23 +1,23 @@
 # Customer Segmentation API
 A  project involving data engineering and API development
 ## Background
-This project is about data cleaning, creating customer segments and exposing a rest api to that provides vouchers to
-old customer.
-This project is implemented using **Python3.10** and **docker**.
+This project is about data cleaning, creating customer segments and exposing a Rest API that provides vouchers to
+previous customer.
+This project is implemented using **Python3.10** and **Docker**.
 
 
 ### Data Cleaning
 The following data-cleaning steps are done in this project:
 * **filter_country** - Data is filtered for Peru(country_code)
 * **cast_to_datetime** - All timestamp fields are casted to datetime(order_ts,first_order_ts,last_order_ts)
-* **cast_to_int**- All numeric fields are casted to int(voucher_amount,total_orders)
+* **cast_to_int**-All numeric fields are casted to int(voucher_amount,total_orders)
 * **remove_nan** - Records for which voucher_amount is nan are discarded.
 
 
 
 ## Requirements
 * Docker is needed to run the project in a containerized manner
-* Additionally, the project also supports local runs without docker. To run the project locally a virtual environment with python3.10 is needed.
+* Additionally, the project also supports local runs without Docker. To run the project locally a virtual environment with python3.10 is needed.
 
 ## Getting Started
 
@@ -40,7 +40,7 @@ docker-compose down
 ```
 
 
-To run the project locally without docker :
+To run the project locally without Docker :
 
 *  Create a 3.10 python virtual environment using the below command.
     
@@ -76,6 +76,9 @@ Components of the project structure
 * `data` - Contains all raw data and the segments created by data transformation code.
 * `processing` - Contains all the code to clean the data and create segments.
 * `test` - Contains all the unit test to test the fastapi and the etl code.
+  * `test_data_cleaning.py` - Unit test to test the data cleaning component
+  * `test_segments.py` - Unit test to test the segment creation code.
+  * `test_rest_api.py` - Unit test to test the Rest API end point
 * `processing.py` - This is an entrypoint to call the code in the processing folder. We have used typer to allow invoke the different methods using command line.
 
 
