@@ -7,7 +7,7 @@ from api.main import app
 
 
 @pytest.fixture
-def input_value():
+def input_value(scope="module"):
     data = {
         "country": ["Germany", "Peru", "India"],
         "total_order": ["123.0", "14.0", np.nan],
@@ -28,8 +28,8 @@ def rest_api_input():
     body = {
         "customer_id": 1,
         "country_code": "Peru",
-        "first_order_ts": "2022-01-04 00:00:00+00:00",
-        "last_order_ts": "2022-01-04 00:00:00+00:00",
+        "first_order_ts": "2022-01-04 00:00:00",
+        "last_order_ts": "2022-01-04 00:00:00",
         "total_order": 100,
         "segment_name": "frequent_segment",
     }
