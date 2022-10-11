@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Literal
 
 from fastapi import FastAPI, HTTPException  # pylint: disable=import-error
-from pydantic import BaseModel
+from pydantic import BaseModel,PositiveInt
 
 from processing.create_segements import compute_frequent_segment, compute_recent_segment
 
@@ -29,7 +29,7 @@ class Customer(BaseModel):
     country_code: Literal["Peru"]
     first_order_ts: datetime
     last_order_ts: datetime
-    total_order: int
+    total_order: PositiveInt
     segment_name: str
 
 
