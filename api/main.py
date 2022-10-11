@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Literal
 
 from fastapi import FastAPI, HTTPException  # pylint: disable=import-error
-from pydantic import BaseModel,PositiveInt
+from pydantic import BaseModel, PositiveInt
 
 from processing.create_segements import compute_frequent_segment, compute_recent_segment
 
@@ -26,7 +26,7 @@ with open((cwd / rel_rec_path), "r") as j:
 
 class Customer(BaseModel):
     customer_id: int
-    country_code: Literal["Peru"]
+    country_code: str
     first_order_ts: datetime
     last_order_ts: datetime
     total_order: PositiveInt
@@ -56,6 +56,12 @@ def get_voucher_amount(customer: Customer) -> dict:
         voucher_amount: Dict of voucher_amount and the value
 
     """
+    if customer.country_code not in ["Peru"]:
+        raise HTTPException(
+            status_code=404,
+            detail="This API is only for country Peru ",
+        )
+
     if customer.segment_name not in ["recency_segment", "frequent_segment"]:
         raise HTTPException(
             status_code=404,
