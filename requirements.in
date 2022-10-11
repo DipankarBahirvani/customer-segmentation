@@ -1,0 +1,7 @@
+pandas
+pyarrow
+typer
+fastapi
+uvicorn[standard]
+pydantic
+requests

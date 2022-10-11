@@ -1,0 +1,6 @@
+black
+pytest
+mypi
+isort
+mypy
+types-python-dateutil

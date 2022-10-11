@@ -1,0 +1,16 @@
+services:
+  processing:
+    build:
+      dockerfile: Dockerfile.processing
+    volumes:
+      - ./data/:/opt/code/data/
+        
+  restapi:
+    build:
+      dockerfile: Dockerfile.api
+    volumes:
+     - ./data/:/opt/code/data/
+    ports:
+      - "80:80"
+    depends_on:
+      - processing

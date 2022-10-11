@@ -1,0 +1,13 @@
+FROM python:3.10-slim
+RUN python3.10 -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+WORKDIR /opt/code
+COPY requirements.txt .
+RUN /opt/venv/bin/pip install --no-cache-dir -r requirements.txt
+COPY /processing  /opt/code/processing
+COPY processing.py /opt/code/
+ENV PYTHONPATH="/opt/code"
+CMD ["python3","/opt/code/processing.py","clean-and-process-data","--source-file-path","data/raw"]
+
+
+
